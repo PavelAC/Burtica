@@ -32,9 +32,8 @@
         // Initialize
         showSlide(0);
 
-        // Auto-advance slides every 30 seconds (optional)
         // setInterval(() => {
         //     if (currentSlideIndex < totalSlides - 1) {
         //         changeSlide(1);
         //     }
-        // }, 30000);
+        // }, 3000);
