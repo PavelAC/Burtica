@@ -32,8 +32,46 @@
         // Initialize
         showSlide(0);
 
-        // setInterval(() => {
-        //     if (currentSlideIndex < totalSlides - 1) {
-        //         changeSlide(1);
-        //     }
-        // }, 3000);
+// Image popup functionality
+function showImagePopup(imageSrc, title) {
+    // Create overlay
+    const overlay = document.createElement('div');
+    overlay.classList.add('image-popup-overlay');
+    
+    // Create popup container
+    const popup = document.createElement('div');
+    popup.classList.add('image-popup');
+    
+    // Create title
+    const popupTitle = document.createElement('h3');
+    popupTitle.textContent = title;
+    
+    // Create image
+    const image = document.createElement('img');
+    image.src = imageSrc;
+    image.alt = title;
+    
+    // Create close button
+    const closeBtn = document.createElement('button');
+    closeBtn.classList.add('popup-close-btn');
+    closeBtn.textContent = '×';
+    closeBtn.addEventListener('click', () => {
+        document.body.removeChild(overlay);
+    });
+    
+    // Assemble popup
+    popup.appendChild(closeBtn);
+    popup.appendChild(popupTitle);
+    popup.appendChild(image);
+    overlay.appendChild(popup);
+    
+    // Add to document
+    document.body.appendChild(overlay);
+    
+    // Close on overlay click
+    overlay.addEventListener('click', (e) => {
+        if (e.target === overlay) {
+            document.body.removeChild(overlay);
+        }
+    });
+}
