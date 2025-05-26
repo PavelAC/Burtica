@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Burtica lu' Andrei - Prezentare Proiect</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="style.css">
+</head>
+<body>
+    <div class="slide-counter">
+        <span id="currentSlide">1</span> / <span id="totalSlides">7</span>
+    </div>
+
+    <div class="presentation-container">
+        <!-- Slide 1: Title -->
+        <div class="slide active">
+            <div class="slide-header">
+                <div class="slide-title">La Burtica lu' Andrei</div>
+                <div class="slide-subtitle">Sistem de Management pentru Servicii de Livrare</div>
+            </div>
+            <div style="text-align: center; margin-top: 50px;">
+                <div style="font-size: 1.8em; color: #2d3436; margin-bottom: 30px;">Proiect Baze de Date</div>
+                <div style="background: linear-gradient(135deg, #74b9ff, #0984e3); color: white; padding: 30px; border-radius: 15px; display: inline-block;">
+                    <h3 style="margin-bottom: 20px;">Echipa de Dezvoltare:</h3>
+                    <div style="font-size: 1.2em; line-height: 1.8;">
+                        <div>🎯 <strong>Mateoi Paul-Andrei-Dumitrel</strong></div>
+                        <div>🎯 <strong>Pavel Andrei-Calin</strong></div>
+                        <div>🎯 <strong>Gherasim Mathias</strong></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 2: General Description -->
+        <div class="slide">
+            <div class="slide-header">
+                <div class="slide-title">Descriere Generală</div>
+            </div>
+            <div class="content-grid">
+                <div class="content-section">
+                    <h3 style="color: #2d3436; margin-bottom: 15px;">🎯 Scopul Proiectului</h3>
+                    <p>Dezvoltarea unei baze de date normalizate pentru un sistem de management al serviciilor de livrare, care să permită gestionarea eficientă a comenzilor, produselor, clienților și curierilor.</p>
+                </div>
+                <div class="content-section">
+                    <h3 style="color: #2d3436; margin-bottom: 15px;">🏗️ Arhitectura Sistemului</h3>
+                    <p>Sistemul utilizează o structură relațională normalizată care respectă principiile ACID și asigură integritatea datelor prin chei primare și străine.</p>
+                </div>
+            </div>
+            <div class="content-section" style="margin-top: 20px;">
+                <h3 style="color: #2d3436; margin-bottom: 15px;">⚡ Funcționalități Principale</h3>
+                <ul>
+                    <li>Gestionarea catalogu de produse cu categorii</li>
+                    <li>Procesarea comenzilor cu tracking în timp real</li>
+                    <li>Management curierii și vehicule</li>
+                    <li>Sistema de review-uri și rating</li>
+                    <li>Gestionarea clienților și istoricul comenzilor</li>
+                    <li>Raportare și analiză performanțe</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 3: Team Components -->
+        <div class="slide">
+            <div class="slide-header">
+                <div class="slide-title">Componența Echipei</div>
+                <div class="slide-subtitle">Micro-zone și Responsabilități</div>
+            </div>
+            <div class="team-member">
+                <h3>👨‍💻 Mateoi Paul-Andrei-Dumitrel</h3>
+                <p><strong>Zona de responsabilitate:</strong> Design și implementare entități principale</p>
+                <ul>
+                    <li>Proiectarea tabelelor: <span class="highlight">produs</span>, <span class="highlight">categorie</span></li>
+                    <li>Implementarea relațiilor one-to-many</li>
+                    <li>Optimizarea indexurilor pentru performanță</li>
+                    <li>Validarea constrainturilor de integritate</li>
+                </ul>
+            </div>
+            <div class="team-member">
+                <h3>👨‍💻 Pavel Andrei-Calin</h3>
+                <p><strong>Zona de responsabilitate:</strong> Sistemul de comenzi și logistică</p>
+                <ul>
+                    <li>Entități: <span class="highlight">comanda</span>, <span class="highlight">curier</span>, <span class="highlight">tracking</span></li>
+                    <li>Implementarea tabelului de legătură many-to-many</li>
+                    <li>Logica de tracking și actualizare status</li>
+                    <li>Proceduri pentru calculul costurilor</li>
+                </ul>
+            </div>
+            <div class="team-member">
+                <h3>👨‍💻 Gherasim Andrei (Mathias)</h3>
+                <p><strong>Zona de responsabilitate:</strong> Gestionarea clienților și feedback</p>
+                <ul>
+                    <li>Entități: <span class="highlight">client</span>, <span class="highlight">review</span></li>
+                    <li>Sistemul de rating și comentarii</li>
+                    <li>Validarea datelor de contact</li>
+                    <li>Implementarea trigger-elor pentru audit</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 4: Initial Structure -->
+        <div class="slide">
+            <div class="slide-header">
+                <div class="slide-title">Structura Inițială</div>
+                <div class="slide-subtitle">Concept și Logică de Bază</div>
+            </div>
+            <div class="content-grid">
+                <div>
+                    <h3 style="color: #2d3436; margin-bottom: 15px;">📋 Entități Identificate Inițial</h3>
+                    <div class="table-structure">
+                        <div class="table-header">STRUCTURA SIMPLIFICATĂ V1.0</div>
+                        <div class="table-field">
+                            <span class="field-name">📦 Produse</span>
+                            <span class="field-type">Catalog de base</span>
+                        </div>
+                        <div class="table-field">
+                            <span class="field-name">🛒 Comenzi</span>
+                            <span class="field-type">Procesare orders</span>
+                        </div>
+                        <div class="table-field">
+                            <span class="field-name">👥 Clienți</span>
+                            <span class="field-type">Date personale</span>
+                        </div>
+                        <div class="table-field">
+                            <span class="field-name">🚚 Curierii</span>
+                            <span class="field-type">Personal livrare</span>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h3 style="color: #2d3436; margin-bottom: 15px;">🎯 Logica Inițială</h3>
+                    <div class="content-section">
+                        <p><strong>Probleme identificate:</strong></p>
+                        <ul>
+                            <li>Redundanță în datele produselor</li>
+                            <li>Lipsa categoriilor pentru organizare</li>
+                            <li>Fără sistem de tracking detaliat</li>
+                            <li>Relații incomplete între entități</li>
+                            <li>Lipsa sistemului de feedback</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="db-schema">
+                <h4 style="color: #74b9ff; margin-bottom: 10px;">Schema Conceptuală Inițială:</h4>
+                <pre>
+CLIENT (id, nume, email, telefon, adresa)
+PRODUS (id, nume, pret, stoc, descriere)
+COMANDA (id, client_id, data, total, status)
+CURIER (id, nume, vehicul, telefon)
+                </pre>
+            </div>
+        </div>
+
+        <!-- Slide 5: Intermediate Variants -->
+        <div class="slide">
+            <div class="slide-header">
+                <div class="slide-title">Variante Intermediare</div>
+                <div class="slide-subtitle">Procesul de Normalizare</div>
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                <div class="content-section">
+                    <h3 style="color: #2d3436; margin-bottom: 15px;">🔄 Versiunea 2.0</h3>
+                    <p><strong>Îmbunătățiri aduse:</strong></p>
+                    <ul>
+                        <li>Adăugarea tabelului <span class="highlight">categorie</span></li>
+                        <li>Separarea informațiilor vehiculului</li>
+                        <li>Introducerea programelor de lucru</li>
+                    </ul>
+                    <div class="db-schema" style="font-size: 0.8em; margin-top: 15px;">
+                        <pre>
+CATEGORIE (id, nume)
+PRODUS (id, nume, categorie_id, pret, stoc)
+CURIER (id, nume, vehicul, program)
+                        </pre>
+                    </div>
+                </div>
+                <div class="content-section">
+                    <h3 style="color: #2d3436; margin-bottom: 15px;">🔄 Versiunea 3.0</h3>
+                    <p><strong>Îmbunătățiri aduse:</strong></p>
+                    <ul>
+                        <li>Tabelul de legătură <span class="highlight">produs_has_comanda</span></li>
+                        <li>Sistem de tracking cu status</li>
+                        <li>Separarea datelor de contact</li>
+                    </ul>
+                    <div class="db-schema" style="font-size: 0.8em; margin-top: 15px;">
+                        <pre>
+TRACKING (id, status, update_time, comanda_id)
+PRODUS_HAS_COMANDA (produs_id, comanda_id, cantitate)
+                        </pre>
+                    </div>
+                </div>
+            </div>
+            <div class="content-section" style="margin-top: 20px;">
+                <h3 style="color: #2d3436; margin-bottom: 15px;">📈 Evoluția Normalizării</h3>
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div class="scenario" style="width: 22%; text-align: center;">
+                        <h4>1NF</h4>
+                        <p>Eliminarea grupurilor repetitive</p>
+                    </div>
+                    <span style="font-size: 2em; color: #ff6b6b;">→</span>
+                    <div class="scenario" style="width: 22%; text-align: center;">
+                        <h4>2NF</h4>
+                        <p>Eliminarea dependențelor parțiale</p>
+                    </div>
+                    <span style="font-size: 2em; color: #ff6b6b;">→</span>
+                    <div class="scenario" style="width: 22%; text-align: center;">
+                        <h4>3NF</h4>
+                        <p>Eliminarea dependențelor tranzitive</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 6: Final Structure -->
+        <div class="slide">
+            <div class="slide-header">
+                <div class="slide-title">Structura Finală</div>
+                <div class="slide-subtitle">Schema Normalizată Completă</div>
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; margin-bottom: 20px;">
+                <div class="table-structure">
+                    <div class="table-header">CATEGORIE</div>
+                    <div class="table-field">
+                        <span class="field-name primary-key">🔑 id_categorie</span>
+                        <span class="field-type">INT</span>
+                    </div>
+                    <div class="table-field">
+                        <span class="field-name">nume</span>
+                        <span class="field-type">VARCHAR(45)</span>
+                    </div>
+                </div>
+                <div class="table-structure">
+                    <div class="table-header">PRODUS</div>
+                    <div class="table-field">
+                        <span class="field-name primary-key">🔑 id_produs</span>
+                        <span class="field-type">INT</span>
+                    </div>
+                    <div class="table-field">
+                        <span class="field-name">nume_produs</span>
+                        <span class="field-type">VARCHAR(45)</span>
+                    </div>
+                    <div class="table-field">
+                        <span class="field-name">stoc</span>
+                        <span class="field-type">INT</span>
+                    </div>
+                    <div class="table-field">
+                        <span class="field-name">pret</span>
+                        <span class="field-type">FLOAT</span>
+                    </div>
+                    <div class="table-field">
+                        <span class="field-name foreign-key">🔗 id_categorie</span>
+                        <span class="field-type">INT</span>
+                    </div>
+                </div>
+                <div class="table-structure">
+                    <div class="table-header">CLIENT</div>
+                    <div class="table-field">
+                        <span class="field-name primary-key">🔑 id_client</span>
+                        <span class="field-type">INT</span>
+                    </div>
+                    <div class="table-field">
+                        <span class="field-name">nume</span>
+                        <span class="field-type">VARCHAR(45)</span>
+                    </div>
+                    <div class="table-field">
+                        <span class="field-name">email</span>
+                        <span class="field-type">VARCHAR(45)</span>
+                    </div>
+                    <div class="table-field">
+                        <span class="field-name">adresa</span>
+                        <span class="field-type">VARCHAR(45)</span>
+                    </div>
+                    <div class="table-field">
+                        <span class="field-name">telefon</span>
+                        <span class="field-type">VARCHAR(10)</span>
+                    </div>
+                </div>
+            </div>
+            <div class="content-section">
+                <h3 style="color: #2d3436; margin-bottom: 15px;">🎯 Logica Structurii Finale</h3>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div>
+                        <p><strong>Principii respectate:</strong></p>
+                        <ul>
+                            <li><span class="highlight">Normalizare 3NF</span> - eliminarea redundanței</li>
+                            <li><span class="highlight">Integritate referențială</span> - chei străine</li>
+                            <li><span class="highlight">Atomicitate</span> - fiecare câmp indivisibil</li>
+                            <li><span class="highlight">Consistență</span> - constrainte de validare</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <p><strong>Relații implementate:</strong></p>
+                        <ul>
+                            <li>One-to-Many: <span class="highlight">categorie → produs</span></li>
+                            <li>Many-to-Many: <span class="highlight">produs ↔ comanda</span></li>
+                            <li>One-to-Many: <span class="highlight">client → comanda</span></li>
+                            <li>One-to-One: <span class="highlight">comanda → tracking</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 7: Usage Scenarios -->
+        <div class="slide">
+            <div class="slide-header">
+                <div class="slide-title">Scenarii de Utilizare</div>
+                <div class="slide-subtitle">Specificații Funcționale</div>
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                <div>
+                    <h3 style="color: #2d3436; margin-bottom: 15px;">🛒 Scenarii Operaționale</h3>
+                    <div class="scenario">
+                        <h4>SC-01: Plasarea unei comenzi</h4>
+                        <p>Clientul selectează produse, specifică cantitățile și confirmă comanda. Sistemul actualizează stocurile și generează tracking.</p>
+                    </div>
+                    <div class="scenario">
+                        <h4>SC-02: Procesarea livrării</h4>
+                        <p>Curierul preia comanda, actualizează statusul în tracking și confirmă livrarea la destinație.</p>
+                    </div>
+                    <div class="scenario">
+                        <h4>SC-03: Gestionarea stocurilor</h4>
+                        <p>Administratorul monitorizează nivelele de stoc și actualizează informațiile despre produse.</p>
+                    </div>
+                </div>
+                <div>
+                    <h3 style="color: #2d3436; margin-bottom: 15px;">📊 Scenarii Analitice</h3>
+                    <div class="scenario">
+                        <h4>SC-04: Raportare vânzări</h4>
+                        <p>Generarea rapoartelor de vânzări pe categorii de produse și perioade de timp specifice.</p>
+                    </div>
+                    <div class="scenario">
+                        <h4>SC-05: Evaluarea performanței</h4>
+                        <p>Analiza timpilor de livrare și rating-urilor pentru optimizarea serviciilor.</p>
+                    </div>
+                    <div class="scenario">
+                        <h4>SC-06: Managementul clienților</h4>
+                        <p>Urmărirea istoricului comenzilor și preferințelor clienților pentru personalizare.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="content-section" style="margin-top: 20px;">
+                <h3 style="color: #2d3436; margin-bottom: 15px;">⚙️ Funcționalități Tehnice</h3>
+                <ul style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                    <li>Validarea integrității datelor prin constrainte</li>
+                    <li>Indexare pentru optimizarea query-urilor</li>
+                    <li>Backup automat și recovery procedures</li>
+                    <li>Auditarea modificărilor prin triggers</li>
+                    <li>Scalabilitate prin partiționing</li>
+                    <li>Securitate prin role-based access</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 8: Conclusions -->
+        <div class="slide">
+            <div class="slide-header">
+                <div class="slide-title">Concluzii și Impresii</div>
+                <div class="slide-subtitle">Retrospectivă Proiect</div>
+            </div>
+            <div class="content-grid">
+                <div class="content-section">
+                    <h3 style="color: #2d3436; margin-bottom: 15px;">✅ Obiective Atinse</h3>
+                    <ul>
+                        <li>Implementarea unei BD normalize (3NF)</li>
+                        <li>Respectarea principiilor ACID</li>
+                        <li>Designul unui sistem scalabil</li>
+                        <li>Integrarea completă a funcționalităților</li>
+                        <li>Optimizarea performanțelor prin indexare</li>
+                    </ul>
+                </div>
+                <div class="content-section">
+                    <h3 style="color: #2d3436; margin-bottom: 15px;">📚 Lecții Învățate</h3>
+                    <ul>
+                        <li>Importanța planificării structurii DB</li>
+                        <li>Procesul iterativ de normalizare</li>
+                        <li>Balanța între normalizare și performanță</li>
+                        <li>Necesitatea documentării detaliate</li>
+                        <li>Valoarea colaborării în echipă</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="team-member" style="text-align: center;">
+                <h3>🎯 Impresii Echipă</h3>
+                <p style="font-size: 1.1em; line-height: 1.6;">
+                    <strong>"La Burtica lu' Andrei"</strong> a reprezentat o provocare tehnică stimulantă care ne-a permis să aplicăm principiile teoretice în practică. 
+                    Colaborarea în echipă și procesul iterativ de design au fost esențiale pentru succesul proiectului.
+                </p>
+            </div>
+            <div class="content-section" style="margin-top: 20px;">
+                <h3 style="color: #2d3436; margin-bottom: 15px; text-align: center;">🚀 Dezvoltări Viitoare</h3>
+                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px;">
+                    <div style="text-align: center; padding: 15px; background: linear-gradient(135deg, #a29bfe, #6c5ce7); color: white; border-radius: 8px;">
+                        <h4>📱 Mobile App</h4>
+                        <p>Interfață mobilă pentru clienți</p>
+                    </div>
+                    <div style="text-align: center; padding: 15px; background: linear-gradient(135deg, #fd79a8, #e84393); color: white; border-radius: 8px;">
+                        <h4>🤖 AI Integration</h4>
+                        <p>Predicții demand și routing</p>
+                    </div>
+                    <div style="text-align: center; padding: 15px; background: linear-gradient(135deg, #00b894, #00a085); color: white; border-radius: 8px;">
+                        <h4>📊 BI Dashboard</h4>
+                        <p>Analytics și KPI monitoring</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="navigation">
+        <button class="nav-btn" id="prevBtn" onclick="changeSlide(-1)">◀ Anterior</button>
+        <button class="nav-btn" id="nextBtn" onclick="changeSlide(1)">Următor ▶</button>
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>
