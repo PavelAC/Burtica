@@ -397,21 +397,9 @@ GROUP BY cat.nume;</pre>
 
             <div class="scenario" style="margin-bottom: 20px;">
                 <h4>📈 SC-04: Raportare vânzări</h4>
-                <p>Generarea rapoartelor de vânzări pe categorii și perioade.</p>
+                <p>Generarea rapoartelor de vânzări pe categorii.</p>
                 <div class="db-schema" style="margin-top: 10px; font-size: 0.85em;">
-                    <pre>-- Vânzări pe categorii în ultima lună
-SELECT cat.nume as categorie, 
-       COUNT(DISTINCT c.id_comanda) as nr_comenzi,
-       SUM(phc.cantitate) as total_produse_vandute,
-       ROUND(AVG(c.total_comanda), 2) as medie_comanda
-FROM categorie cat
-JOIN produs p ON cat.id_categorie = p.id_categorie
-JOIN produs_has_comanda phc ON p.id_produs = phc.produs_id_produs
-JOIN comanda c ON phc.comanda_id_comanda = c.id_comanda
-WHERE c.data >= DATE_SUB(NOW(), INTERVAL 1 MONTH)
-GROUP BY cat.nume
-ORDER BY total_produse_vandute DESC;
-
+                    <pre>
 -- Top 5 produse cele mai vândute
 SELECT p.nume_produs, cat.nume as categorie, 
        SUM(phc.cantitate) as total_vandut,
@@ -439,19 +427,7 @@ JOIN comanda c ON cur.id_curier = c.curier_id_curier
 LEFT JOIN review r ON c.id_comanda = r.id_produs
 GROUP BY cur.id_curier
 ORDER BY rating_mediu DESC;
-
--- Analiza timpilor de livrare
-SELECT 
-    CASE 
-        WHEN TIMESTAMPDIFF(HOUR, c.data, t.update_time) <= 24 THEN '≤ 24h'
-        WHEN TIMESTAMPDIFF(HOUR, c.data, t.update_time) <= 48 THEN '24-48h'
-        ELSE '> 48h'
-    END as timp_livrare,
-    COUNT(*) as nr_comenzi
-FROM comanda c
-JOIN tracking t ON c.id_comanda = t.id_comanda
-WHERE t.status = 'Livrat'
-GROUP BY timp_livrare;</pre>
+</pre>
                 </div>
             </div>
 
